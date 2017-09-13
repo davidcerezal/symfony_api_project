@@ -27,21 +27,26 @@ class ApiController extends FOSRestController
     /**
      *
      *
+     *@Annotations\View()
+     *@return array
      */
     public function getCallsAction()
     {
-        return $this->getCallManager()->fecth();
+        return $this->getCallManager()->fecthComunications();
     }
 
     /**
      *
+     * @param int $id the note id
      * @throws NotFoundHttpException when note not exist
+     *@Annotations\View()
+     *@return array
      */
     public function getCallAction($id)
     {
         $logger = $this->getCallManager();
         try {
-            $communications = $logger->get($id);
+            $communications = $logger->getComunication($id);
         } catch (\UserNotFoundException $e) {
             throw $this->createNotFoundException();
         }
