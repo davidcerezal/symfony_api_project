@@ -6,16 +6,45 @@ namespace AppBundle\Controller;
 
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations\Route;
+use FOS\RestBundle\Controller\Annotations;
+use FOS\RestBundle\Request\ParamFetcherInterface;
+use FOS\RestBundle\View\View;
+use AppBundle\CallManager;
+
 
 class ApiController extends FOSRestController
 {
+
+
     /**
-     * @Route("/api")
+     * return \AppBundle\NoteManager
      */
-    public function indexAction()
+    public function getCallManager()
     {
-        $data = array("hello" => "world");
-        $view = $this->view($data);
-        return $this->handleView($view);
+        return $this->get('AppBundle\CallManager');
+    }
+
+    /**
+     *
+     *
+     */
+    public function getCallsAction()
+    {
+        return $this->getCallManager()->fecth();
+    }
+
+    /**
+     *
+     * @throws NotFoundHttpException when note not exist
+     */
+    public function getCallAction($id)
+    {
+        $logger = $this->getCallManager();
+        try {
+            $communications = $logger->get($id);
+        } catch (\UserNotFoundException $e) {
+            throw $this->createNotFoundException();
+        }
+        return $communications;
     }
 }

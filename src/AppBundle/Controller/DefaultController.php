@@ -5,11 +5,23 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * Index action
+     *
+     *@ApiDoc(
+     *  resource=true,
+     *  description="This is a description of your API method",
+     *  filters={
+     *      {"name"="a-filter", "dataType"="integer"},
+     *      {"name"="another-filter", "dataType"="string", "pattern"="(foo|bar) ASC|DESC"}
+     *  }
+     * )
+     * @Route("/")
+     *
      */
     public function indexAction(Request $request)
     {

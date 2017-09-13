@@ -1,0 +1,8 @@
+# src/AppBundle/Resources/config/routing.yml
+call_list:
+    path:     /api/getCalls
+    defaults: { _controller: AppBundle:Api:getCalls }
+
+call_show:
+    path:     /api/getCall/{id}
+    defaults: { _controller: AppBundle:Api:getCall }

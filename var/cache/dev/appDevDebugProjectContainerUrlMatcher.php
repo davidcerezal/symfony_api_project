@@ -108,33 +108,29 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        elseif (0 === strpos($pathinfo, '/api')) {
-            // app_api_index
-            if ('/api' === $pathinfo) {
-                return array (  '_controller' => 'AppBundle\\Controller\\ApiController::indexAction',  '_route' => 'app_api_index',);
+        elseif (0 === strpos($pathinfo, '/api/getCall')) {
+            // call_list
+            if ('/api/getCalls' === $pathinfo) {
+                return array (  '_controller' => 'AppBundle\\Controller\\ApiController::getCallsAction',  '_route' => 'call_list',);
             }
 
-            // nelmio_api_doc_index
-            if (0 === strpos($pathinfo, '/api/doc') && preg_match('#^/api/doc(?:/(?P<view>[^/]++))?$#s', $pathinfo, $matches)) {
-                if ('GET' !== $canonicalMethod) {
-                    $allow[] = 'GET';
-                    goto not_nelmio_api_doc_index;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'nelmio_api_doc_index')), array (  '_controller' => 'Nelmio\\ApiDocBundle\\Controller\\ApiDocController::indexAction',  'view' => 'default',));
+            // call_show
+            if (preg_match('#^/api/getCall/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'call_show')), array (  '_controller' => 'AppBundle\\Controller\\ApiController::getCallAction',));
             }
-            not_nelmio_api_doc_index:
 
         }
 
-        // homepage
-        if ('' === $trimmedPathinfo) {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'homepage');
+        // nelmio_api_doc_index
+        if (0 === strpos($pathinfo, '/api/doc') && preg_match('#^/api/doc(?:/(?P<view>[^/]++))?$#s', $pathinfo, $matches)) {
+            if ('GET' !== $canonicalMethod) {
+                $allow[] = 'GET';
+                goto not_nelmio_api_doc_index;
             }
 
-            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'nelmio_api_doc_index')), array (  '_controller' => 'Nelmio\\ApiDocBundle\\Controller\\ApiDocController::indexAction',  'view' => 'default',));
         }
+        not_nelmio_api_doc_index:
 
         // fos_oauth_server_token
         if ('/oauth/v2/token' === $pathinfo) {
