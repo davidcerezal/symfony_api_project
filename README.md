@@ -23,8 +23,8 @@ The API will be written in PHP with the Symfony 3 framework. The following SF2 b
 
 Installation
 --------------
-
-## Download the repository
+Download the repository from:
+https://github.com/davidcerezal/symfony_api_project
 
 ## Create the DB
 You can now update your database schema :
