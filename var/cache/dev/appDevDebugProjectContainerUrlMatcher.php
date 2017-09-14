@@ -108,16 +108,43 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        elseif (0 === strpos($pathinfo, '/api/getCall')) {
-            // call_list
-            if ('/api/getCalls' === $pathinfo) {
-                return array (  '_controller' => 'AppBundle\\Controller\\ApiController::getCallsAction',  '_route' => 'call_list',);
+        // index
+        if ('' === $trimmedPathinfo) {
+            if ('GET' !== $canonicalMethod) {
+                $allow[] = 'GET';
+                goto not_index;
             }
 
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'index');
+            }
+
+            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'index',);
+        }
+        not_index:
+
+        if (0 === strpos($pathinfo, '/api/getCall')) {
+            // call_list
+            if ('/api/getCalls' === $pathinfo) {
+                if ('POST' !== $canonicalMethod) {
+                    $allow[] = 'POST';
+                    goto not_call_list;
+                }
+
+                return array (  '_controller' => 'AppBundle\\Controller\\ApiController::getCallsAction',  '_route' => 'call_list',);
+            }
+            not_call_list:
+
             // call_show
-            if (preg_match('#^/api/getCall/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            if (preg_match('#^/api/getCall/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                if ('POST' !== $canonicalMethod) {
+                    $allow[] = 'POST';
+                    goto not_call_show;
+                }
+
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'call_show')), array (  '_controller' => 'AppBundle\\Controller\\ApiController::getCallAction',));
             }
+            not_call_show:
 
         }
 

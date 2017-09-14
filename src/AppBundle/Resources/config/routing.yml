@@ -1,8 +1,22 @@
 # src/AppBundle/Resources/config/routing.yml
+
+# index route "/"
+index:
+    path:     /
+    methods: [GET]
+    defaults: { _controller: AppBundle:Default:index }
+
+# getCalls route "/api/getCalls"
 call_list:
     path:     /api/getCalls
+    methods: [POST]
     defaults: { _controller: AppBundle:Api:getCalls }
 
+# getCall route "/api/getCall"
 call_show:
     path:     /api/getCall/{id}
+    methods: [POST]
     defaults: { _controller: AppBundle:Api:getCall }
+    requirements:
+            id: '\d+'
+

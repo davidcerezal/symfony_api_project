@@ -610,6 +610,10 @@
     <service id="AppBundle\Controller\DefaultController" class="AppBundle\Controller\DefaultController" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
     </service>
+    <service id="AppBundle\Model\Comunication" class="AppBundle\Model\Comunication" autowire="true" autoconfigure="true"/>
+    <service id="AppBundle\Model\ComunicationCollection" class="AppBundle\Model\ComunicationCollection" autowire="true" autoconfigure="true"/>
+    <service id="AppBundle\Service\Http" class="AppBundle\Service\Http" autowire="true" autoconfigure="true"/>
+    <service id="AppBundle\Service\Parser" class="AppBundle\Service\Parser" autowire="true" autoconfigure="true"/>
     <service id="controller_name_converter" class="Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser" public="false">
       <tag name="monolog.logger" channel="request"/>
       <argument type="service" id="kernel"/>
@@ -795,7 +799,7 @@
       <tag name="monolog.logger" channel="cache"/>
       <argument></argument>
       <argument>0</argument>
-      <argument>0ot1eoDgCdJNTS5EH7H6gb</argument>
+      <argument>BkBvnZUpNREumL9xEYfP6O</argument>
       <argument>C:\xampp\symfonyprojects\symfony_api_project\var\cache\dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -805,7 +809,7 @@
       <tag name="monolog.logger" channel="cache"/>
       <argument></argument>
       <argument>0</argument>
-      <argument>0ot1eoDgCdJNTS5EH7H6gb</argument>
+      <argument>BkBvnZUpNREumL9xEYfP6O</argument>
       <call method="setLogger">
         <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       </call>
@@ -4960,7 +4964,7 @@
     <service id="cache.system.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>PsZszJxZEP</argument>
       <argument>0</argument>
-      <argument>0ot1eoDgCdJNTS5EH7H6gb</argument>
+      <argument>BkBvnZUpNREumL9xEYfP6O</argument>
       <argument>C:\xampp\symfonyprojects\symfony_api_project\var\cache\dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -4968,7 +4972,7 @@
     <service id="cache.validator.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>tJLO7z+LFE</argument>
       <argument>0</argument>
-      <argument>0ot1eoDgCdJNTS5EH7H6gb</argument>
+      <argument>BkBvnZUpNREumL9xEYfP6O</argument>
       <argument>C:\xampp\symfonyprojects\symfony_api_project\var\cache\dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -4976,7 +4980,7 @@
     <service id="cache.serializer.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>9Ck25X38ko</argument>
       <argument>0</argument>
-      <argument>0ot1eoDgCdJNTS5EH7H6gb</argument>
+      <argument>BkBvnZUpNREumL9xEYfP6O</argument>
       <argument>C:\xampp\symfonyprojects\symfony_api_project\var\cache\dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -4984,7 +4988,7 @@
     <service id="cache.annotations.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>SpnRucWoq0</argument>
       <argument>0</argument>
-      <argument>0ot1eoDgCdJNTS5EH7H6gb</argument>
+      <argument>BkBvnZUpNREumL9xEYfP6O</argument>
       <argument>C:\xampp\symfonyprojects\symfony_api_project\var\cache\dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>

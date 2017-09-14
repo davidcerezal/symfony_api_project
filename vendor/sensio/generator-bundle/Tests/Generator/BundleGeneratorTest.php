@@ -26,7 +26,7 @@ class BundleGeneratorTest extends GeneratorTest
             'Controller/DefaultController.php',
             'Resources/views/Default/index.html.twig',
             'Resources/config/routing.yml',
-            'Tests/Controller/DefaultControllerTest.php',
+            'Tests/Controller/ApiControllerTest.php',
             'Resources/config/services.yml',
             'DependencyInjection/Configuration.php',
             'DependencyInjection/FooBarExtension.php',
@@ -59,7 +59,7 @@ class BundleGeneratorTest extends GeneratorTest
             'Controller/DefaultController.php',
             'Resources/views/Default/index.html.twig',
             'Resources/config/routing.xml',
-            'Tests/Controller/DefaultControllerTest.php',
+            'Tests/Controller/ApiControllerTest.php',
             'Resources/config/services.xml',
             'DependencyInjection/Configuration.php',
             'DependencyInjection/FooBarExtension.php',
@@ -142,7 +142,7 @@ class BundleGeneratorTest extends GeneratorTest
         $bundle->setTestsDirectory($this->tmpDir.'/other/path/tests');
         $this->getGenerator()->generateBundle($bundle);
 
-        $this->assertTrue(file_exists($this->tmpDir.'/other/path/tests/Controller/DefaultControllerTest.php'));
+        $this->assertTrue(file_exists($this->tmpDir.'/other/path/tests/Controller/ApiControllerTest.php'));
     }
 
     protected function getGenerator()

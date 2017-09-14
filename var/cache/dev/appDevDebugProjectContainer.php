@@ -38,6 +38,10 @@ class appDevDebugProjectContainer extends Container
             'appbundle\\callmanager' => 'AppBundle\\CallManager',
             'appbundle\\controller\\apicontroller' => 'AppBundle\\Controller\\ApiController',
             'appbundle\\controller\\defaultcontroller' => 'AppBundle\\Controller\\DefaultController',
+            'appbundle\\model\\comunication' => 'AppBundle\\Model\\Comunication',
+            'appbundle\\model\\comunicationcollection' => 'AppBundle\\Model\\ComunicationCollection',
+            'appbundle\\service\\http' => 'AppBundle\\Service\\Http',
+            'appbundle\\service\\parser' => 'AppBundle\\Service\\Parser',
         );
         $this->methodMap = array(
             '1_37be40a6eebed87dacf57c5ed95ffb8620baa4aee740e5f9bc848439df3752cc' => 'get137be40a6eebed87dacf57c5ed95ffb8620baa4aee740e5f9bc848439df3752ccService',
@@ -46,6 +50,10 @@ class appDevDebugProjectContainer extends Container
             'AppBundle\\CallManager' => 'getAppBundle_CallManagerService',
             'AppBundle\\Controller\\ApiController' => 'getAppBundle_Controller_ApiControllerService',
             'AppBundle\\Controller\\DefaultController' => 'getAppBundle_Controller_DefaultControllerService',
+            'AppBundle\\Model\\Comunication' => 'getAppBundle_Model_ComunicationService',
+            'AppBundle\\Model\\ComunicationCollection' => 'getAppBundle_Model_ComunicationCollectionService',
+            'AppBundle\\Service\\Http' => 'getAppBundle_Service_HttpService',
+            'AppBundle\\Service\\Parser' => 'getAppBundle_Service_ParserService',
             'annotation_reader' => 'getAnnotationReaderService',
             'annotations.reader' => 'getAnnotations_ReaderService',
             'argument_resolver.default' => 'getArgumentResolver_DefaultService',
@@ -521,6 +529,46 @@ class appDevDebugProjectContainer extends Container
     protected function getAppBundle_Controller_DefaultControllerService()
     {
         return $this->services['AppBundle\Controller\DefaultController'] = new \AppBundle\Controller\DefaultController();
+    }
+
+    /**
+     * Gets the public 'AppBundle\Model\Comunication' shared autowired service.
+     *
+     * @return \AppBundle\Model\Comunication
+     */
+    protected function getAppBundle_Model_ComunicationService()
+    {
+        return $this->services['AppBundle\Model\Comunication'] = new \AppBundle\Model\Comunication();
+    }
+
+    /**
+     * Gets the public 'AppBundle\Model\ComunicationCollection' shared autowired service.
+     *
+     * @return \AppBundle\Model\ComunicationCollection
+     */
+    protected function getAppBundle_Model_ComunicationCollectionService()
+    {
+        return $this->services['AppBundle\Model\ComunicationCollection'] = new \AppBundle\Model\ComunicationCollection();
+    }
+
+    /**
+     * Gets the public 'AppBundle\Service\Http' shared autowired service.
+     *
+     * @return \AppBundle\Service\Http
+     */
+    protected function getAppBundle_Service_HttpService()
+    {
+        return $this->services['AppBundle\Service\Http'] = new \AppBundle\Service\Http();
+    }
+
+    /**
+     * Gets the public 'AppBundle\Service\Parser' shared autowired service.
+     *
+     * @return \AppBundle\Service\Parser
+     */
+    protected function getAppBundle_Service_ParserService()
+    {
+        return $this->services['AppBundle\Service\Parser'] = new \AppBundle\Service\Parser();
     }
 
     /**
@@ -3990,7 +4038,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getCache_Annotations_RecorderInnerService($lazyLoad = true)
     {
-        return $this->services['cache.annotations.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('SpnRucWoq0', 0, '0ot1eoDgCdJNTS5EH7H6gb', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
+        return $this->services['cache.annotations.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('SpnRucWoq0', 0, 'BkBvnZUpNREumL9xEYfP6O', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
     }
 
     /**
@@ -4016,7 +4064,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getCache_Serializer_RecorderInnerService($lazyLoad = true)
     {
-        return $this->services['cache.serializer.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('9Ck25X38ko', 0, '0ot1eoDgCdJNTS5EH7H6gb', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
+        return $this->services['cache.serializer.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('9Ck25X38ko', 0, 'BkBvnZUpNREumL9xEYfP6O', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
     }
 
     /**
@@ -4026,7 +4074,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getCache_System_RecorderInnerService($lazyLoad = true)
     {
-        return $this->services['cache.system.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('PsZszJxZEP', 0, '0ot1eoDgCdJNTS5EH7H6gb', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
+        return $this->services['cache.system.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('PsZszJxZEP', 0, 'BkBvnZUpNREumL9xEYfP6O', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
     }
 
     /**
@@ -4046,7 +4094,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getCache_Validator_RecorderInnerService($lazyLoad = true)
     {
-        return $this->services['cache.validator.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('tJLO7z+LFE', 0, '0ot1eoDgCdJNTS5EH7H6gb', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
+        return $this->services['cache.validator.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('tJLO7z+LFE', 0, 'BkBvnZUpNREumL9xEYfP6O', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
     }
 
     /**
